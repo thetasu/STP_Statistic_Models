@@ -1,7 +1,7 @@
 from sklearn.svm import SVC
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.linear_model import LogisticRegression
-from SVM_RF_LG.load_data import load_eod_data,load_eod_data_622,load_eod_data_flex
+from SVM_RF_LG.load_data import load_eod_data
 from sklearn.metrics import accuracy_score, precision_score, recall_score, f1_score,roc_auc_score,matthews_corrcoef
 import warnings
 from statistics import mean
@@ -12,6 +12,7 @@ warnings.filterwarnings('ignore',category=DeprecationWarning)
 
 dataset_name = 'ACL18'
 # dataset_name = 'KDD17'
+
 if dataset_name == 'ACL18':
     data_path = '../data/ACL18/ourpped'
 elif dataset_name == 'KDD17':
@@ -20,9 +21,7 @@ elif dataset_name == 'KDD17':
 # Model SVM/RF/LG
 model_name = 'RF'
 
-# train_data,train_label,test_data,test_label,tickers = load_eod_data(dataset_name,data_path) # err for acl18 and kdd17 split
-train_data,train_label,test_data,test_label,tickers = load_eod_data_622(dataset_name,data_path) # err for kdd17 split
-# train_data,train_label,test_data,test_label,tickers = load_eod_data_flex(dataset_name,data_path)
+train_data,train_label,test_data,test_label,tickers = load_eod_data(dataset_name, data_path) # err for kdd17 split
 # print(train_data.shape)
 acc,f1,pre,rec,auc,mcc = [],[],[],[],[],[]
 pred_labels = pd.DataFrame()
